@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Neo4j Graph Visualization</title>
+  <!-- Load Neovis.js from a CDN -->
+  <script src="https://unpkg.com/neovis.js/dist/neovis.js"></script>
+</head>
+<body>
+  <div id="viz" style="width: 800px; height: 600px;"></div>
+  <script>
+    const config = {
+      container_id: "viz",
+      server_url: "bolt://localhost:7687", // Your Neo4j instance URL
+      server_user: "neo4j",
+      server_password: "123456789",
+      labels: {
+        "Gene": { "caption": "name" },
+        "Cell": { "caption": "name" },
+        "Condition": { "caption": "name" }
+      },
+      relationships: {
+        "LINKS": {
+          "caption": "weight",
+          "thickness": "weight"
+        },
+        "RELATED_TO": {}
+      },
+      initial_cypher: "MATCH (n)-[r]->(m) RETURN n, r, m"
+    };
+    const viz = new NeoVis.default(config);
+    viz.render();
+  </script>
+</body>
+</html>
