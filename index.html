@@ -13,18 +13,7 @@
       server_url: "bolt://localhost:7687", // Your Neo4j instance URL
       server_user: "neo4j",
       server_password: "123456789",
-      labels: {
-        "Gene": { "caption": "name" },
-        "Cell": { "caption": "name" },
-        "Condition": { "caption": "name" }
-      },
-      relationships: {
-        "LINKS": {
-          "caption": "weight",
-          "thickness": "weight"
-        },
-        "RELATED_TO": {}
-      },
+      
       initial_cypher: "MATCH (n)-[r]->(m) RETURN n, r, m"
     };
     const viz = new NeoVis.default(config);
